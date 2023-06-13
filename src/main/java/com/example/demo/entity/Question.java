@@ -2,20 +2,24 @@ package com.example.demo.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Data
 @Entity
 public class Question {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    private String questionId;
-    private String questionText;
-    private String correctAnswer;
+    private String answer;
+    private String question;
+    private int value;
+    private String airdate;
+    private String createdAt;
+    private String updatedAt;
+    private int categoryId;
+    private int gameId;
 
-
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
